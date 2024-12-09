@@ -1,1 +1,43 @@
 
+class SGT{
+        public:
+         vector<ll>segment;
+          SGT(ll n){
+               segment.resize((2*n)+1);
+          }
+           void build(ll node,ll st,ll end,vector<ll>&nums){
+                if(st==end) {
+                    segment[node]=nums[st];
+                     return ;
+                }
+                ll rnode=(2*n)+2;
+                ll lnode=(2*n)+1;
+                ll mid=(st+end)/2;
+                 build(rnode,mid+1,end,nums);
+                  build(lnode,st,mid,nums);
+                   segment[node]=__gcd(segment[lnode],segment[rnode]);
+           }
+        ll query(ll node,ll st,ll end,ll l,ll r){
+             if(st>r or end<l) return INT_MAX;
+              if(st>=l and end<=r) return segment[node];
+                ll rnode=(2*n)+2;
+                ll lnode=(2*n)+1;
+                ll mid=(st+end)/2;
+                ll right_val= query(rnode,mid+1,end,l,r);
+                ll left_val=  query(lnode,st,mid,l,r);
+     if(right_val!=INT_MAX and left_val!=INT_MAX) return __gcd(left_val,right_val);
+     if(left_val!=INT_MAX) return left_val;
+      return right_val;
+                  
+        }
+   };
+   
+  
+ void solve(){
+       
+             
+             
+               
+         
+     
+  }
