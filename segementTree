@@ -3,7 +3,7 @@ class SGT{
         public:
          vector<ll>segment;
           SGT(ll n){
-               segment.resize((2*n)+1);
+               segment.resize((4*n)+1);
           }
            void build(ll node,ll st,ll end,vector<ll>&nums){
                 if(st==end) {
