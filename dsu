@@ -1,0 +1,19 @@
+class DSU {
+    vector<ll> leader;
+public:
+    DSU(ll n) {
+      
+        leader.resize(size+1);
+        rep(i,1,n)leader[i]=i;
+    }
+
+    int find_leader(ll x) {
+        if (leader[x] == x) return x;
+        return leader[x] =find_leader(leader[x]);
+    }
+     void (ll u, ll v) {
+         u=get_leader(u);
+         v=get_leader(v);
+         if(u!=v)leader[v]=u;
+    }
+};
